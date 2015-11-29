@@ -4,4 +4,3 @@ ruby "2.2.3"
 
 gem "rspec"
 gem "faker"
-gem "pry"
