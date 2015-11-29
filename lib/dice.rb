@@ -1,11 +1,11 @@
 class Dice
-	attr_accessor :dices
+  attr_accessor :dices
 
-	def initialize(dices)
-		@dices = dices
-	end
+  def initialize(dices)
+    @dices = dices
+  end
 
-	def roll
-		dices.times.collect { rand 1..6 }
-	end
+  def roll
+    dices.times.collect { rand 1..6 }
+  end
 end
