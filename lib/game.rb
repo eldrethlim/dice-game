@@ -9,7 +9,7 @@ class Game
 
   def start
     players = NUMBER_OF_PLAYERS.times.collect { Player.new }
-    
+
     announce_players(players)
 
     sleep(1)
@@ -21,10 +21,11 @@ class Game
       players.each do |player|
         player.rolls = Dice.new(player.dice).roll
         Results.new(player).run
-        
+
         WINNERS << player if player.dice == DICE_TO_WIN
       end
-      
+
+      GC.start
       break unless WINNERS.empty?
       round += 1
     end
@@ -48,4 +49,3 @@ class Game
     WINNERS.each { |winner| puts "- #{winner.name}" }
   end
 end
-
