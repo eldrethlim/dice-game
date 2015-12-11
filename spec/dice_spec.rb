@@ -3,10 +3,10 @@ require "spec_helper"
 class DiceSpec
 
   describe Dice do
-    let (:hundred_rolls) { Dice.new(100).roll }
-    let (:five_rolls) { Dice.new(5).roll }
-    let (:three_rolls) { Dice.new(3).roll }
-    
+    let (:hundred_rolls) { Dice.roll(100) }
+    let (:five_rolls) { Dice.roll(5) }
+    let (:three_rolls) { Dice.roll(3) }
+
     it "rolls within 1..6" do
       invalid_numbers = hundred_rolls.select { |roll| roll < 1 || roll > 6 }
       expect(invalid_numbers).to be_empty

@@ -5,7 +5,7 @@ describe Results do
   before do
     @player = Player.new
     @player.rolls = [1,2,3,4,5,6]
-    @results = Results.new(@player).run
+    @results = Results.fetch(@player)
   end
 
   it "remove die roll 6" do

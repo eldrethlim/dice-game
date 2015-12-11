@@ -19,13 +19,12 @@ class Game
     loop do
       puts "-- Round #{round} --"
       players.each do |player|
-        player.rolls = Dice.new(player.dice).roll
-        Results.new(player).run
+        player.rolls = Dice.roll(player.dice)
+        Results.fetch(player)
 
         WINNERS << player if player.dice == DICE_TO_WIN
       end
 
-      GC.start
       break unless WINNERS.empty?
       round += 1
     end

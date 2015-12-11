@@ -1,25 +1,21 @@
 class Results
-  attr_accessor :player
-  FILTERABLE_ROLLS = [6]
+  class << self
+    FILTERABLE_ROLLS = [6]
 
-  def initialize(player)
-    @player = player
-  end
+    def fetch(player)
+      puts "#{player.name}'s initial rolls are : #{player.rolls}"
+      update_rolls(player)
 
-  def run
-    puts "#{player.name}'s initial rolls are : #{player.rolls}"
-    update_rolls
+      puts "New results: #{player.rolls}"
+      puts "#{player.name} has #{player.dice} dice remaining."
+      puts "--------------------"
+    end
 
-    puts "New results: #{player.rolls}"
-    puts "#{player.name} has #{player.dice} dice remaining."
-    puts "--------------------"
-  end
+    private
 
-  private
-
-  def update_rolls
-    player.rolls.reject! { |roll| FILTERABLE_ROLLS.include?(roll) }
-    player.dice = player.rolls.count
+    def update_rolls(player)
+      player.rolls.reject! { |roll| FILTERABLE_ROLLS.include?(roll) }
+      player.dice = player.rolls.count
+    end
   end
 end
-
