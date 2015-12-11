@@ -1,5 +1,7 @@
 class Dice
-  def self.roll(dice)
-    dice.times.collect { rand 1..6 }
+  class << self
+    def roll(dice)
+      dice.times.collect { rand 1..6 }
+    end
   end
 end
